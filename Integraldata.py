@@ -17,7 +17,3 @@ Flux = trapez(wave,intens)
 
 print("Mi algoritmo: " + str(Flux) + "( W*m^-2)" )
 print("Algoritmo de scipy: " + str(scipy.integrate.trapz(intens,wave)) + "( W*m^-2)")
-
-Lum = 4.0*np.pi*scipy.constants.au**2*Flux
-Teff = 5778
-Radio = (scipy.constants.au/(Teff)**2)*np.sqrt(Flux/scipy.constants.sigma)
