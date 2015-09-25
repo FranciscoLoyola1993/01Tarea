@@ -19,15 +19,18 @@ def simpson(a,b,f,N):
         I += s
     return I
 
-Integral = simpson(0,np.pi/2.0,y,100)
+Integralyo = simpson(0,np.pi/2.0,y,100)
+Integralsc = scipy.integrate.quad(y,0,np.pi/2.)
 
-print("Integral numerica con mi algoritmo = " + str(Integral) + " (Notar que analiticamente es pi^4/15)")
-print("Algoritmo de scipy = " + str(scipy.integrate.quad(y,0,np.pi/2.)))
 
 
 Teff = 5778
-P = 2*np.pi*sc.h/sc.c**2*(sc.k*Teff/sc.h)**4*Integral
+Pmialgortimo = 2*np.pi*sc.h/sc.c**2*(sc.k*Teff/sc.h)**4*Integralyo
+Pscp = 2*np.pi**5*sc.h/sc.c**2*(sc.k*Teff/sc.h)**4/15.
+
+print("Intensidad con mi algoritmo = " + str(Pmialgortimo) )
+print("Intensidad con Scipy = " + str(Pscp))
 
 Flujoti = 1366.09
-Radio = sc.au*np.sqrt(Flujoti/P)
+Radio = sc.au*np.sqrt(Flujoti/Pmialgortimo)
 print("Radio solar =  " + str(Radio) + " [m]")
